@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>RealmView</title>
+  </head>
+  <body>
+    <div id="mountNode"></div>
+    <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-3.1.0/build/g6.js"></script>
+    <script type="text/javascript" >
+      // 定义数据源
+      //其他点
+      const nameArray = [
+        'Object','Function','Boolean','Symbol','Error',
+        'Number','BigInt','Math','Date','String','RegExp',
+        'Array','Map','Set','ArrayBuffer','JSON','Promise',
+        'Reflect','Proxy','Intl','arguments'
+      ];
+      //中心点
+      const centerName = 'realm';
+      let nodes_a = new Array();
+      let edges_a = new Array();
+      let size_a = 100;
+      let startNum = parseInt(- nameArray.length / 2);
+      let y_num = 200;
+      let x_num = 0;
+      for(var name of nameArray) {
+        if(startNum <= 0) {
+          x_num = 1200 + startNum * size_a;
+        } else {
+          x_num = 1200 + startNum * size_a;
+        }
+        console.log(startNum);
+        if (startNum === 0) {
+          y_num = 800;
+          startNum = parseInt(- nameArray.length / 2);
+        }
+        nodes_a.push({
+          id: name,
+          x: x_num,
+          y: y_num,
+          label: name
+        });
+        edges_a.push({
+          source: centerName,
+          target: name
+        });
+        startNum++;
+      }
+      nodes_a.push({
+          id: centerName,
+          x: 800,
+          y: 400,
+          label: centerName
+        });
+      const data = {
+        // 点集
+        nodes: nodes_a,
+        // 边集
+        edges: edges_a
+      };
+
+      // 创建 G6 图实例
+      const graph = new G6.Graph({
+        container: 'mountNode', // 指定图画布的容器 id，与第 9 行的容器对应
+        // 画布宽高
+        width: 1600,
+        height: 1000
+      });
+      // 读取数据
+      graph.data(data);
+      // 渲染图
+      graph.render();
+    </script>
+  </body>
+</html>
