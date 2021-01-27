@@ -39,7 +39,7 @@ class Request {
                 console.log(data.toString());
                 parser.receive(data.toString());
                 if(parser.isFinished) {
-                    resolve(parser.response());
+                    resolve(parser.response);
                     connection.end();
                 }
             })
@@ -178,9 +178,9 @@ class TrunkedBodyParser {
             }
         } else if(this.current === this.WAITING_NEW_LINE) {
             if(char === '\r') {
-                this.current = this.WAITING_LENGTH_LINE_END;
+                this.current = this.WAITING_NEW_LINE_END;
             }
-        } else if(this.current === this.WAITING_LENGTH_LINE_END) {
+        } else if(this.current === this.WAITING_NEW_LINE_END) {
             if(char === '\n') {
                 this.current = this.WAITING_LENGTH;
             }
