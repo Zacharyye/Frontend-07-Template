@@ -22,5 +22,11 @@
 
 ### 5.HTML解析｜处理属性
 
+~
+
+### 14.CSS计算｜specificity的计算逻辑
+
+- ![image-20210203134744966](specificity计算逻辑.png)
+
 
 
