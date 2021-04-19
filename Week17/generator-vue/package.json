@@ -1,5 +1,5 @@
 {
-  "name": "generator-toolchain",
+  "name": "generator-vue",
   "version": "1.0.0",
   "description": "学习笔记",
   "main": "generators/app/index.js",
@@ -11,5 +11,6 @@
   "dependencies": {
     "yeoman-generator": "^4.2.0",
     "yo": "^3.1.1"
-  }
+  },
+  "devDependencies": {}
 }
