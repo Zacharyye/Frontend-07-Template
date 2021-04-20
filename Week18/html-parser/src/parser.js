@@ -338,8 +338,9 @@ function afterQuotedAttributeValue(c) {
     } else if (c == EOF) {
 
     } else {
-        currentAttribute.value += c;
-        return doubleQuotedAttributeValue;
+        // currentAttribute.value += c;
+        // return doubleQuotedAttributeValue;
+        throw new Error("unexpected character \"" + c + "\"");
     }
 }
 
@@ -391,6 +392,11 @@ function selfClosingStartTag(c) {
 
 export function parseHTML(html) {
     let state = data;
+    let currentToken = null;
+    let currentAttribute = null;
+    let currentTextNode = null;
+
+    let stack = [{type: "document", children:[]}];
     for(let c of html) {
         state = state(c);
     }
