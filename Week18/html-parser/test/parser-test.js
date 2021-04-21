@@ -37,6 +37,12 @@ describe("parse html:", function () {
     assert.equal(tree.children.length, 1);
     assert.equal(tree.children[0].children.length, 0);
   }) 
+  it('<a href="abc" ?/> ', function () {
+    let tree = parseHTML('<a href="abc" ?></a>');
+    console.log(tree);
+    assert.equal(tree.children.length, 1);
+    assert.equal(tree.children[0].children.length, 0);
+  }) 
 
   it('<a id=abc></a>', function () {
     let tree = parseHTML('<a id=abc></a>');
@@ -44,6 +50,20 @@ describe("parse html:", function () {
     assert.equal(tree.children.length, 1);
     assert.equal(tree.children[0].children.length, 0);
   }) 
+  it('<a id=abc\n ></a>', function () {
+    let tree = parseHTML('<a id=abc\n></a>');
+    console.log(tree);
+    assert.equal(tree.children.length, 1);
+    assert.equal(tree.children[0].children.length, 0);
+  }) 
+
+
+  it('<a id="abc"$%/>', function () {
+    let tree = parseHTML('<a id="abc"$%/>');
+    console.log(tree);
+    assert.equal(tree.children.length, 1);
+    assert.equal(tree.children[0].children.length, 0);
+  }) 
 
   it('<a id=abc/>', function () {
     let tree = parseHTML('<a id=abc/>');
@@ -51,8 +71,7 @@ describe("parse html:", function () {
     assert.equal(tree.children.length, 1);
     assert.equal(tree.children[0].children.length, 0);
   }) 
-
-  it('<a id=abc/>', function () {
+  it('<a /id=abc/>', function () {
     let tree = parseHTML('<a id=abc/>');
     console.log(tree);
     assert.equal(tree.children.length, 1);
@@ -60,12 +79,6 @@ describe("parse html:", function () {
   }) 
   it('<a id=\'abc\'/>', function () {
     let tree = parseHTML('<a id=\'abc\'/>');
-    console.log(tree);
-    assert.equal(tree.children.length, 1);
-    assert.equal(tree.children[0].children.length, 0);
-  }) 
-  it('<a id=\'abc\' style="width: 100px;"/>', function () {
-    let tree = parseHTML('<a id=\'abc\' style="width: 100px;"/>');
     console.log(tree);
     assert.equal(tree.children.length, 1);
     assert.equal(tree.children[0].children.length, 0);
