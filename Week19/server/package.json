@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "publish": "scp -r -P 22 ./* ubuntu@1.116.154.131:/home/ubuntu/server",
     "start": "node ./bin/www"
   },
   "dependencies": {

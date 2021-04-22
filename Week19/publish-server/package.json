@@ -1,0 +1,13 @@
+{
+  "name": "publish-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server.js",
+    "publish": "scp -r -P 22 ./* ubuntu@1.116.154.131:/home/ubuntu/publish-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
